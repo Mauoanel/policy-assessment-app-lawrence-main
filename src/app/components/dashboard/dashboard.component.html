@@ -1,0 +1,151 @@
+<div class="py-3">
+    <div class="container-fluid">
+        <h1 class="text-center pb-3 text-white">Dashboard</h1>
+        <div class="row p-5 bg-white ml-auto border" style="min-height: 37.5rem !important;"
+             *ngIf="policies && policies.agreements.length > 0">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="policyNumber">Policy number</label>
+                    <select id="policyNumber" class="form-control text-uppercase" name="policyNumber" ngModel
+                            required
+                            [(ngModel)]="policy.policyNumber" (ngModelChange)="onPolicyNumberChange($event)">
+                        <option *ngFor="let policy of policies.agreements" [ngValue]="policy">
+                            {{policy.policyNumber}}
+                        </option>
+                    </select>
+                    <label>Total Policies ({{policies.agreements.length}})</label>
+
+                    <div *ngIf="selectedPolicy && selectedPolicy.type === 'MEDICAL AID'" class="col p-4"><i class="d-block fa-3x mb-2 text-muted"></i>
+                        <h4 class="text-center"><b>{{selectedPolicy.type}}</b></h4>
+                        <div class="text-center">
+                            <i class="fa fa-medkit" style="font-size: 40rem;color: #cf240c;"
+                               aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div *ngIf="selectedPolicy && selectedPolicy.type === 'LIFE INSURANCE'" class="col p-4"><i class="d-block fa-3x mb-2 text-muted"></i>
+                        <h4 class="text-center"><b>{{selectedPolicy.type}}</b></h4>
+                        <div class="text-center">
+                            <i class="fa fa-line-chart" style="font-size: 37rem;color: #198754;"
+                               aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 img-thumbnail shadow" *ngIf="selectedPolicy">
+                <div style="border-left: 3px !important; border-color: grey !important">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h1>{{selectedPolicy.type}}</h1>
+                            </div>
+                        </div>
+                        <div class="row text-center justify-content-center"
+                             *ngIf="selectedPolicy.type === 'MEDICAL AID'">
+                            <div class="col-md-4 col-6 p-4"><i class="d-block fa fa-circle-o fa-3x mb-2 text-muted"></i>
+                                <h4><b>Policy: {{selectedPolicy.policyNumber}}</b></h4>
+
+                                <div class="text-center">
+                                    <i class="fa fa-hospital-o" style="font-size: 13rem;color: #6061bd;"
+                                       aria-hidden="true"></i>
+                                </div>
+                                <p>Out of Hospital
+                                    Cover: {{selectedPolicy.hasOutOfHospitalCover ? 'Yes' : 'No'}}</p></div>
+                            <div class="col-md-4 p-4"><i class="d-block fa fa-circle fa-3x mb-2 text-muted"></i>
+                                <h4><b>Option: {{selectedPolicy.optionName}}</b></h4>
+                                <div class="text-center">
+                                    <i class="fa fa-sticky-note-o" style="font-size: 13rem;color: #6061bd;"
+                                       aria-hidden="true"></i>
+                                </div>
+                                <p>Cover Option: {{selectedPolicy.optionName}}</p>
+                            </div>
+                            <div class="col-md-4 col-6 p-4"><i
+                                    class="d-block fa fa-stop-circle-o fa-3x mb-2 text-muted"></i>
+                                <h4><b>Premium: R {{selectedPolicy.monthlyPremiumAmount}}</b></h4>
+                                <div class="text-center">
+                                    <i class="fa fa-university" style="font-size: 13rem;color: #6061bd;"
+                                       aria-hidden="true"></i>
+                                </div>
+                                <p>Hospital Cover Option: {{selectedPolicy.hospitalCoverOption}}</p>
+                            </div>
+
+                            <div class="col-md-4 form-group" style="padding: 16px;">
+                                <button class="btn btn-primary" style="width: 100%;" type="submit">Call Advisor</button>
+                            </div>
+                            <div class="col-md-4 form-group" style="padding: 16px;">
+                                <button class="btn btn-warning" style="width: 100%;" type="submit">Ask Call Back
+                                </button>
+                            </div>
+                            <div class="col-md-4 form-group" style="padding: 16px;">
+                                <button class="btn btn-success" style="width: 100%;" type="submit">Claim</button>
+                            </div>
+                            <br>
+                            <br>
+
+                            <div class="col-md-4 form-group" style="padding: 16px;">
+                                <div class="text-center">
+                                    <i class="fa fa-id-card" style="font-size: 13rem;color: #6061bd;"
+                                       aria-hidden="true"></i>
+                                </div>
+                                <button  class="btn btn-info" style="width: 100%;" type="submit">
+                                    Access Policy Documents
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="row text-center justify-content-center"
+                             *ngIf="selectedPolicy.type === 'LIFE INSURANCE'">
+                            <div class="col-md-4 col-6 p-4"><i class="d-block fa fa-circle-o fa-3x mb-2 text-muted"></i>
+                                <h5><b>Policy: {{selectedPolicy.policyNumber}}</b></h5>
+
+                                <div class="text-center">
+                                    <i class="fa fa-hospital-o" style="font-size: 13rem;color: #6061bd;"
+                                       aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-4"><i class="d-block fa fa-circle fa-3x mb-2 text-muted"></i>
+                                <h5><b>Cover Benefit: {{selectedPolicy.lifeCoverBenefitAmount}}</b></h5>
+                                <div class="text-center">
+                                    <i class="fa fa-sticky-note-o" style="font-size: 13rem;color: #6061bd;"
+                                       aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 p-4"><i
+                                    class="d-block fa fa-stop-circle-o fa-3x mb-2 text-muted"></i>
+                                <h5><b>Critical Illness Cover Benefit:
+                                    R {{selectedPolicy.criticalIllnessCoverBenefitAmount}}</b></h5>
+                                <div class="text-center">
+                                    <i class="fa fa-university" style="font-size: 13rem;color: #6061bd;"
+                                       aria-hidden="true"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 form-group" style="padding: 16px;">
+                                <button class="btn btn-primary" style="width: 100%;" type="submit">Call Advisor</button>
+                            </div>
+                            <div class="col-md-4 form-group" style="padding: 16px;">
+                                <button class="btn btn-warning" style="width: 100%;" type="submit">Ask Call Back
+                                </button>
+                            </div>
+                            <div class="col-md-4 form-group" style="padding: 16px;">
+                                <button class="btn btn-success" style="width: 100%;" type="submit">Claim</button>
+                            </div>
+                            <br>
+                            <br>
+
+                            <div class="col-md-4 form-group" style="padding: 16px;">
+                                <div class="text-center">
+                                    <i class="fa fa-id-card" style="font-size: 13rem;color: #6061bd;"
+                                       aria-hidden="true"></i>
+                                </div>
+                                <button  class="btn btn-info" style="width: 100%;" type="submit">
+                                    Access Policy Documents
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

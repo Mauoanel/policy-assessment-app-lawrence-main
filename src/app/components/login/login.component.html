@@ -1,0 +1,41 @@
+
+
+<div class="py-5">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="p-5 bg-white text-dark col-lg-6  col-10 mx-auto border" style="min-height: 32.8rem !important" >
+                <h1 class="mb-4 text-center"> LOGIN </h1>
+                <form (ngSubmit)="login(f)" #f="ngForm" novalidate>
+                    <div class="form-group" style="padding: 16px;">
+                        <label>Username</label>
+                        <input name="username" class="form-control "
+                               ngModel required #username="ngModel" [(ngModel)]="userCred.username"
+                               placeholder="Username">
+                        <div *ngIf="username.errors?.required">
+                            <small class="text-danger"> Username is required.</small>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding: 16px;">
+                        <label>Password</label>
+                        <div class="error">{{password.errors?.message}}&nbsp;</div>
+                        <input name="password" class="form-control "
+                               ngModel required #password="ngModel" [(ngModel)]="userCred.password"
+                               placeholder="Password">
+                        <div *ngIf="password.errors?.required">
+                            <small class="text-danger"> Password is required.</small>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding: 16px;">
+                        <button class="btn btn-primary" style="width: 100%;" type="submit">Login</button>
+                        <div *ngIf="message"
+                                class="error" style="text-align: center; padding: 16px;">{{message}}</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>  <br>
+</div>

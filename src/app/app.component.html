@@ -1,0 +1,55 @@
+<div class="container-fluid" style="background-color: #003366!important;">
+<!--  <div style="padding-bottom: 48px;"></div>-->
+
+    <br>
+    <br>
+  <div class="row">
+    <div class="col-md-12">
+        <div style="text-align: right;">
+            <div *ngIf="sessionTokenHolderService.token" class="pull-right w-25" style="padding: 16px;">
+                <button class="btn btn-success" style="width: 50%;"
+                        type="submit" (click)="logout()" >Logout</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+    <br>
+    <div>
+        <hr class="text-white">
+        <div class="container-fluid text-white">
+            <div class="row">
+                <div class="p-4 col-md-3">
+                    <h2 class="mb-4">Dynamic Devs</h2>
+                    <p>A company for whatever you may need, from website prototyping to publishing</p>
+                </div>
+                <div class="p-4 col-md-3">
+                    <h2 class="mb-4">Mapsite</h2>
+                    <ul class="list-unstyled"> <a  class="text-white">Home</a> <br> <a  class="text-white">About us</a> <br> <a  class="text-white">Our services</a> <br> <a  class="text-white">Stories</a> </ul>
+                </div>
+                <div class="p-4 col-md-3">
+                    <h2 class="mb-4">Contact</h2>
+                    <p> <a  class="text-white">
+                        <i class="fa d-inline mr-3 text-white fa-phone"></i>+246 - 542 550 5462</a> </p>
+                    <p> <a  class="text-white">
+                        <i class="fa d-inline mr-3 text-white fa-envelope-o"></i>info@Dynamic Devs.com</a> </p>
+                    <p> <a  class="text-white">
+                        <i class="fa d-inline mr-3 fa-map-marker text-white"></i>365 Park Street, NY</a> </p>
+                </div>
+                <div class="p-4 col-md-3">
+                    <h2 class="mb-4">Subscribe</h2>
+                    <form>
+                        <fieldset class="form-group"> <label for="exampleInputEmail1">Get our newsletter</label> <input type="email" class="form-control" placeholder="Enter email"> </fieldset> <button type="submit" class="btn btn-outline-dark">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <p class="text-center">© Copyright 2018 Dynamic Devs - All rights reserved. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
